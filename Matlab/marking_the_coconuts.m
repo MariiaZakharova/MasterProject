@@ -1,8 +1,6 @@
 image = imread('coconut.png');
 image2 = imread('coconut.png');
-image3 = ones(10000,10000);
-imwrite(image3, 'white.png');
-image3 = imread('white.png');
+
 hold on
 
 % Load annotations
@@ -20,21 +18,21 @@ nr2_ann = size(x2_ann, 1);
 
 %Draw rectangles according to annotations
 for i=1:nr1_ann
-    x_top= x1_ann(i)-50;
-    y_top = y1_ann(i)-50;   
-    image = insertShape(image, 'FilledRectangle', [x_top y_top 100 100], 'Color', uint8([0 0 0]), 'Opacity', 1.0);
-    image2 = insertShape(image2, 'FilledRectangle', [x_top y_top 100 100], 'Color', 'black', 'Opacity', 0.5);
-    image3 = insertShape(image3, 'FilledRectangle', [x_top y_top 100 100], 'Color', uint8([0 0 0]), 'Opacity', 1.0);
+
+% +1 because in Matlab indexes begin from 1, not from 0
+    top_left_x = x1_ann(i) - 50 + 1;
+    top_left_y = y1_ann(i) - 50 + 1;  
+    image = insertShape(image, 'FilledRectangle', [top_left_x top_left_y 100 100], 'Color', uint8([0 0 0]), 'Opacity', 1.0);
+    image2 = insertShape(image2, 'FilledRectangle', [top_left_x top_left_y 100 100], 'Color', 'black', 'Opacity', 0.5);
+
 end
 
 for i=1:nr2_ann
-    x_top= x2_ann(i)-50;
-    y_top = y2_ann(i)-50;  
-    image = insertShape(image, 'FilledRectangle', [x_top y_top 100 100], 'Color', uint8([0 0 0]), 'Opacity', 1.0);
-    image2 = insertShape(image2, 'FilledRectangle', [x_top y_top 100 100], 'Color', 'blue', 'Opacity', 0.5);
-    image3 = insertShape(image3, 'FilledRectangle', [x_top y_top 100 100], 'Color', uint8([0 0 0]), 'Opacity', 1.0);
+    top_left_x = x2_ann(i) - 50 + 1;
+    top_left_y = y2_ann(i) - 50 + 1;  
+    image = insertShape(image, 'FilledRectangle', [top_left_x top_left_y 100 100], 'Color', uint8([0 0 0]), 'Opacity', 1.0);
+    image2 = insertShape(image2, 'FilledRectangle', [top_left_x top_left_y 100 100], 'Color', 'blue', 'Opacity', 0.5);
 end
 
-imwrite(image, 'marked_black_coconuts_background.png');
-imwrite(image2, 'marked_color_coconuts_background.png');
-imwrite(image3, 'marked_black_white_coconuts_background.png');
+imwrite(image, 'marked_black_coconuts_background2.png');
+imwrite(image2, 'marked_color_coconuts_background2.png');
