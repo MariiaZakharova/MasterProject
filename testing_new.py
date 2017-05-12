@@ -9,6 +9,7 @@ from io import BytesIO
 
 #os.system("bazel build tensorflow/examples/image_retraining:retrain")
 #os.system("bazel-bin/tensorflow/examples/image_retraining/retrain --image_dir tensorflow/examples/image_retraining/cropping/training_data --output_graph tensorflow/examples/label_image/data/tensorflow_inception_graph.pb --output_labels tensorflow/examples/label_image/data/imagenet_comp_graph_label_strings.txt --bottleneck_dir tensorflow/examples/label_image/data/bottleneck")
+os.system("python tensorflow/examples/image_retraining/retrain.py --image_dir tensorflow/examples/image_retraining/cropping/training_data --output_graph tensorflow/examples/label_image/data/tensorflow_inception_graph.pb --output_labels tensorflow/examples/label_image/data/imagenet_comp_graph_label_strings.txt --bottleneck_dir tensorflow/examples/label_image/data/bottleneck --summaries_dir tensorflow/examples/label_image/data/retrain_logs")
 
 import time
 start_time = time.time()
